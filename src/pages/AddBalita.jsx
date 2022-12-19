@@ -24,18 +24,21 @@ const AddBalita = () => {
   const [namaAyah, setNamaAyah] = useState("");
   const [namaIbu, setNamaIbu] = useState("");
   const [rw, setRw] = useState("");
+  const [rt, setRt] = useState("");
 
   const reset = () => {
     setNamaBalita("");
     setNamaAyah("");
     setNamaIbu("");
     setRw("");
+    setRt("");
     setTanggalLahir("");
   };
 
   const handleSubmit = async () => {
     let data = [
       namaBalita.toUpperCase(),
+      rt,
       rw,
       tanggalLahir,
       namaIbu.toUpperCase(),
@@ -81,7 +84,7 @@ const AddBalita = () => {
         </Button>
         <Card background={"white"}>
           <CardHeader>
-            <Text fontSize={"2xl"}>Tambah Balita</Text>
+            <Text fontSize={"2xl"}>Tambah Posyandu</Text>
           </CardHeader>
           <CardBody>
             <Form onSubmit={handleSubmit}>
@@ -95,12 +98,21 @@ const AddBalita = () => {
                 />
               </FormControl>
               <FormControl isRequired mb={4}>
-                <FormLabel>Nomor Rukun Warga (RW)</FormLabel>
+                <FormLabel>Rukun Tetangga (RT)</FormLabel>
+                <NumberInput
+                  value={rt}
+                  onChange={(valueString) => setRt(valueString)}
+                >
+                  <NumberInputField placeholder="RT" />
+                </NumberInput>
+              </FormControl>
+              <FormControl isRequired mb={4}>
+                <FormLabel>Rukun Warga (RW)</FormLabel>
                 <NumberInput
                   value={rw}
                   onChange={(valueString) => setRw(valueString)}
                 >
-                  <NumberInputField placeholder="Nomor RW" />
+                  <NumberInputField placeholder="RW" />
                 </NumberInput>
               </FormControl>
               <FormControl mb={4} isRequired>

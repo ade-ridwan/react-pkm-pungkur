@@ -10,6 +10,7 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Tfoot,
   Th,
   Thead,
@@ -17,11 +18,13 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { Link as RLink } from "react-router-dom";
+import { Link as RLink, useSearchParams } from "react-router-dom";
 import spreadsheetService from "../services/spreadsheet.service";
 
 const Posyandu = () => {
   const [data, setData] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const toast = useToast();
 
   useEffect(() => {
@@ -52,16 +55,20 @@ const Posyandu = () => {
         <Card background={"white"}>
           <CardHeader>
             <Button
+              mb={6}
               as={RLink}
-              to="/tambah-posyandu"
+              to={"/tambah-posyandu?rw=" + searchParams.get("rw")}
               mr={4}
               colorScheme={"facebook"}
             >
               Tambah Data Posyandu
             </Button>
+            <Text textAlign={"center"} fontSize={"xl"} fontWeight={"500"}>
+              Data Posyandu RW 0 {searchParams.get("rw")}
+            </Text>
           </CardHeader>
           <CardBody>
-            {data.length > 1 ? (
+            {data.length > 0 ? (
               <TableContainer>
                 <Table size={"sm"} variant={"simple"}>
                   <TableCaption>

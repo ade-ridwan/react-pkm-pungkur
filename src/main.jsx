@@ -6,6 +6,7 @@ import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import AddBalita from "./pages/AddBalita";
 import Balita from "./pages/Balita";
 import Posyandu from "./pages/Posyandu";
+import AddPosyandu from "./pages/AddPosyandu";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/tambah-posyandu",
-        element: <AddBalita />,
+        element: <AddPosyandu />,
       },
     ],
   },
